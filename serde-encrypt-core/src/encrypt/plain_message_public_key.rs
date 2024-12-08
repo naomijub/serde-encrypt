@@ -8,8 +8,8 @@ use crate::{
     random::RngSingleton,
 };
 use alloc::vec::Vec;
-use chacha20poly1305::{aead::Payload, XNonce};
 use crypto_box::{aead::Aead, ChaChaBox};
+use crypto_secretbox::{aead::Payload, AeadCore, Nonce as XNonce};
 
 use super::encrypted_message::EncryptedMessage;
 
@@ -81,6 +81,6 @@ pub trait PlainMessagePublicKeyCore {
     /// Generate random nonce which is large enough (24-byte) to rarely conflict.
     fn generate_nonce() -> XNonce {
         let mut rng = Self::R::instance();
-        crypto_box::generate_nonce(rng.deref_mut())
+        crypto_box::ChaChaBox::generate_nonce(rng.deref_mut())
     }
 }

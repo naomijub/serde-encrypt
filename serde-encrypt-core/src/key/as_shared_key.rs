@@ -1,8 +1,8 @@
 //! Keys for common key cryptosystem.
 
 use crate::random::RngSingleton;
-use chacha20poly1305::Key as ChaChaKey;
 use core::{convert::TryInto, ops::DerefMut};
+use crypto_secretbox::Key as ChaChaKey;
 use rand::RngCore;
 
 /// 32-byte key shared among sender and receiver secretly.

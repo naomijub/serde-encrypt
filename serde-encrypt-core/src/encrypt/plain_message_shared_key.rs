@@ -9,8 +9,8 @@ pub use shared_key_deterministic_core::PlainMessageSharedKeyDeterministicCore;
 use super::encrypted_message::EncryptedMessage;
 use crate::{error::Error, key::as_shared_key::AsSharedKey};
 use alloc::{format, vec::Vec};
-use chacha20poly1305::{XChaCha20Poly1305, XNonce};
-use crypto_box::aead::{Aead, NewAead};
+use crypto_box::aead::Aead;
+use crypto_secretbox::{KeyInit, Nonce as XNonce, XChaCha20Poly1305};
 
 /// Encrypt into EncryptedMessage
 fn encrypt<S>(

@@ -12,8 +12,8 @@ repository = "https://github.com/laysakura/serde-encrypt"
 version = "0.7.0"
 
 [dependencies]
-chacha20poly1305 = {version = "0.8", default-features = false, features = ["alloc", "xchacha20poly1305"]}
-crypto_box = {version = "0.6"}
+crypto_secretbox = {version = "0.1.1", default-features = false, features = ["chacha20", "alloc"]}
+crypto_box = {version = "0.9.1",  features = ["chacha20"]}
 
 rand = {version = "0.8", default-features = false}
 rand_chacha = {version = "0.3", default-features = false}
@@ -25,6 +25,6 @@ spin = {version = "0.9", default-features = false, features = ["spin_mutex", "la
 default = ["std"]
 
 std = [
-  "chacha20poly1305/std",
+  "crypto_secretbox/std",
   "rand_chacha/std",
 ]

@@ -4,7 +4,7 @@ use crate::{
     encrypt::encrypted_message::EncryptedMessage, error::Error, key::as_shared_key::AsSharedKey,
 };
 use alloc::vec::Vec;
-use chacha20poly1305::XNonce;
+use crypto_secretbox::Nonce as XNonce;
 
 use super::{decrypt, encrypt};
 
